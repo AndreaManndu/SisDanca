@@ -1,10 +1,14 @@
+package com.ufpb.sisDanca;
 
 public class Aluno extends Pessoa{
 	private int matrica;
 	private int mensalidade;
 	private boolean status; 
-	
 	private String dataDeEntrada;
+	
+	public Aluno(String nome, String cpf, String email) {
+		super(nome, cpf, email);
+	}
 	public int getMatrica() {
 		return matrica;
 	}
