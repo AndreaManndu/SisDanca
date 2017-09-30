@@ -2,23 +2,23 @@ package com.ufpb.sisDanca;
 
 public class Danca {
 	
-	private String tipoDanca;
+	private DancasDisponiveis dancas;
 	private String horario;
 	private Professor professor;
-	private int mensalidade ;
+	private int mensalidade;
 	
-	public Danca(String tipoDanca, String horario, Professor professor, int mensalidade){
-		this.tipoDanca=tipoDanca;
+	public Danca(DancasDisponiveis dancas, String horario, Professor professor, int mensalidade){
+		this.dancas = dancas;
 		this.horario=horario;
 		this.professor=professor;
 		this.mensalidade=mensalidade;
 	}
 	
-	public String getTipoDanca() {
-		return tipoDanca;
+	public DancasDisponiveis getTipoDanca() {
+		return dancas;
 	}
-	public void setTipoDanca(String tipoDanca) {
-		this.tipoDanca = tipoDanca;
+	public void setTipoDanca(DancasDisponiveis dancas) {
+		this.dancas = dancas;
 	}
 	public String getHorario() {
 		return horario;
@@ -36,15 +36,41 @@ public class Danca {
 	public int getMensalidade() {
 		return mensalidade;
 	}
-	public void setMensalidade(int mensalidade) {
+	private void setMensalidade(int mensalidade) {
 		this.mensalidade = mensalidade;	
+	}
 	
+	public void calculaMensalidade(){
+		if (dancas == DancasDisponiveis.BALLET){
+			setMensalidade(100);
+		}
+		else if ( dancas == DancasDisponiveis.CONTEPORANEA){
+			setMensalidade (80);
+		}
+		else if ( dancas == DancasDisponiveis.DANCA_DO_VENTRE){
+			setMensalidade (80);
+		}
+		else if ( dancas == DancasDisponiveis.HIP_HOP){
+			setMensalidade (50);
+		}
+		else if ( dancas == DancasDisponiveis.JAZZ){
+			setMensalidade (60);
+		}
+		else if ( dancas == DancasDisponiveis.SALSA){
+			setMensalidade (70);
+		}
+		else if ( dancas == DancasDisponiveis.TANGO){
+			setMensalidade (70);
+		}
+		
 		
 	}
+	
 	@Override
 	public String toString() {
 	
-		return this.tipoDanca;
+		return this.dancas; //falta fazer o toString
+		
 	}
 	 
 	

@@ -1,25 +1,21 @@
 package com.ufpb.sisDanca;
 
 public class Aluno extends Pessoa{
-	private int matrica;
-	private int mensalidade;
+	private int matricula;
+	private Danca tipoDanca;
 	private boolean status; 
 	private String dataDeEntrada;
 	
-	public Aluno(String nome, String cpf, String email) {
+	public Aluno(String nome, String cpf, String email, int matricula, Danca tipoDanca, boolean status, String dataDeEntrada) {
+		
 		super(nome, cpf, email);
 	}
-	public int getMatrica() {
-		return matrica;
+	public int getMatricula() {
+		return matricula;
 	}
-	public void setMatrica(int matrica) {
-		this.matrica = matrica;
-	}
-	public int getMensalidade() {
-		return mensalidade;
-	}
-	public void setMensalidade(int mensalidade) {
-		this.mensalidade = mensalidade;
+	public void setMatrica(int matricula) {
+		this.matricula = matricula;
+	
 	}
 	public boolean isStatus() {
 		return status;
