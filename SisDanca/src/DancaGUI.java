@@ -35,6 +35,7 @@ public class DancaGUI extends JFrame {
 	
 
 	SisDeDanca dancaFacade = new SisDeDanca();
+	
 		
 	public DancaGUI (){
 		setTitle("Sistema de Dança");

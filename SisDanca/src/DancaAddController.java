@@ -19,6 +19,7 @@ public class DancaAddController implements ActionListener {
 	
 	
 	
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		DancasDisponiveis dancas = DancaGUI.leDancas(janelaPrincipal);

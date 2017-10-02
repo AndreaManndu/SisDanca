@@ -7,6 +7,7 @@ public class Danca {
 	private int mensalidade;
 	
 	
+	
 	public Danca(DancasDisponiveis dancas, String horario, int mensalidade){
 		this.dancas = dancas;
 		this.horario=horario;

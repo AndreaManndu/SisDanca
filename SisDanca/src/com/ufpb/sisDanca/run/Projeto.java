@@ -8,6 +8,7 @@ public class Projeto {
 	public static void main (String []args){
 		
 		
+		
 		String resp =  JOptionPane.showInputDialog("Bem vindo ao SisDança\n1.Cadasrar Professor\n2.Cadasrar Aluno\n3.Cadastrar Dança\n4.Sair");
 		while (true){
 			if (resp.equals("1")){

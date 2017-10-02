@@ -15,6 +15,7 @@ public class GerenciaDanTest {
 		Danca d1 = new Danca(DancasDisponiveis.BALLET, "19:00", 10);
 		
 		
+		
 	}
 
 }

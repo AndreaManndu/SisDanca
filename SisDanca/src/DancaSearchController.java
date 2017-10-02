@@ -14,6 +14,8 @@ public class DancaSearchController implements ActionListener {
 		this.janelaPrincipal = janelaPrincipal;
 	}
 
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub

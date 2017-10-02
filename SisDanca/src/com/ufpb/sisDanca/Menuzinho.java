@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 
 public class Menuzinho extends JFrame {
 
+	
 	private JPanel contentPane;
 
 	public static void main(String[] args) {

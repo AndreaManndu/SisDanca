@@ -5,7 +5,7 @@ public class Aluno extends Pessoa{
 	private Danca tipoDanca;
 	private boolean status; 
 	private String dataDeEntrada;
-	
+
 	public Aluno(String nome, String cpf, String email, int matricula, Danca tipoDanca, boolean status, String dataDeEntrada) {
 		
 		super(nome, cpf, email);

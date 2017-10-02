@@ -11,6 +11,7 @@ public class SisDeDanca {
 	private Map<String, Professor> professores;
 	private Map<String, Aluno> alunos;
 	private Map<String, Danca> dancas;
+	
 
 	public SisDeDanca() {
 		this.professores = new HashMap<String, Professor>();

@@ -9,6 +9,8 @@ public class DancaJaExisteException extends Exception {
 	public   DancaJaExisteException (String msg){
 		super (msg);		
 	}
+	
 }
+
 
 
