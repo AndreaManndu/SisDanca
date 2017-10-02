@@ -4,13 +4,12 @@ public class Danca {
 	
 	private DancasDisponiveis dancas;
 	private String horario;
-	private Professor professor;
 	private int mensalidade;
 	
-	public Danca(DancasDisponiveis dancas, String horario, Professor professor, int mensalidade){
+	
+	public Danca(DancasDisponiveis dancas, String horario, int mensalidade){
 		this.dancas = dancas;
 		this.horario=horario;
-		this.professor=professor;
 		this.mensalidade=mensalidade;
 	}
 	
@@ -25,12 +24,6 @@ public class Danca {
 	}
 	public void setHorario(String horario) {
 		this.horario = horario;
-	}
-	public Professor getProfessor() {
-		return professor;
-	}
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
 	}
 
 	public int getMensalidade() {
@@ -69,8 +62,7 @@ public class Danca {
 	@Override
 	public String toString() {
 	
-		return this.dancas; //falta fazer o toString
-		
+		return "Danças disponiveis: "+this.dancas+"Horários disponíveis: "+this.horario+"Mensalidade; "+this.mensalidade;
 	}
 	 
 	

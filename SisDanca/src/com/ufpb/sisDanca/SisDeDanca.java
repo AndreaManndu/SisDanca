@@ -22,20 +22,20 @@ public class SisDeDanca {
 
 	public void cadastrarAluno(Aluno aluno) throws AlunoJaExisteException {
 		Aluno a= alunos.get(aluno.getEmail());
-		if(a != null){
+		if(a == null){
 			this.alunos.put(aluno.getEmail(), aluno);
 			
 		}else{
 			
-		throw new AlunoJaExisteException(" O Aluno já exista!");
+			throw new AlunoJaExisteException(" O Aluno já existe!");
 		}
 			
 	}
 
 	public void cadastrarProfessor(Professor professor)throws ProfessorJaExistenteException  {
-		Professor p= professores.get(professor.getEmail());
-		if(p !=null){
-			this.professores.put(professor.getEmail(), professor);	
+		Professor p= professores.get(professor.getCpf());
+		if(p == null){
+			this.professores.put(professor.getCpf(), professor);	
 		}else{
 			throw new ProfessorJaExistenteException(" O professor já existe!");
 			
@@ -45,17 +45,18 @@ public class SisDeDanca {
 
 	public void cadastrarDanca(Danca danca) throws DancaJaExisteException {
 		Danca d= dancas.get(danca.getTipoDanca());
-		if( d!= null){
-		this.dancas.put(danca.getTipoDanca(), danca);
+		if( d == null){
+			this.dancas.put(danca.toString(), danca);
 	
-	}else{
-		throw new DancaJaExisteException(" O professor já existe!");	
-	}
+		}else{
+			throw new DancaJaExisteException(" O professor já existe!");	
+		}
 		
 	}
 
-	public Aluno pesquisaAlunoPorDanca(String email) throws AlunoJaExisteException {
-		Aluno a = alunos.get(email);
+	public Aluno pesquisaAlunoPorDanca(String cpf) throws AlunoJaExisteException {
+		
+		Aluno a = alunos.get(cpf);
 
 		if (a != null) {
 			return a;
