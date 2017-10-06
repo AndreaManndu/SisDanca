@@ -1,16 +1,14 @@
 package com.ufpb.sisDanca.exception;
 
-public class ProfessorJaExistenteException extends Exception {
+public class DancaJaExistenteException extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public   ProfessorJaExistenteException (String msg){
+	public   DancaJaExistenteException (String msg){
 		super (msg);
-	
-		
 	}
-	
+		
 
 }

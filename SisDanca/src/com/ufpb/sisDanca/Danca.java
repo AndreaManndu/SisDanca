@@ -10,8 +10,6 @@ public class Danca {
 	
 	public Danca(DancasDisponiveis dancas, String horario, int mensalidade){
 		this.dancas = dancas;
-		this.horario=horario;
-		this.mensalidade=mensalidade;
 	}
 	
 	public DancasDisponiveis getTipoDanca() {
@@ -20,43 +18,75 @@ public class Danca {
 	public void setTipoDanca(DancasDisponiveis dancas) {
 		this.dancas = dancas;
 	}
+	
 	public String getHorario() {
 		return horario;
-	}
+	} 
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-
+	
 	public int getMensalidade() {
 		return mensalidade;
-	}
-	private void setMensalidade(int mensalidade) {
-		this.mensalidade = mensalidade;	
+	} 
+	
+	public void setMensalidade(int mensalidade){
+		this.mensalidade = mensalidade;
 	}
 	
-	public void calculaMensalidade(){
+	
+	public void valorMensalidade(){
 		if (dancas == DancasDisponiveis.BALLET){
 			setMensalidade(100);
+			
 		}
 		else if ( dancas == DancasDisponiveis.CONTEPORANEA){
 			setMensalidade (80);
+			
 		}
 		else if ( dancas == DancasDisponiveis.DANCA_DO_VENTRE){
 			setMensalidade (80);
+			
 		}
 		else if ( dancas == DancasDisponiveis.HIP_HOP){
 			setMensalidade (50);
-		}
+		}	
 		else if ( dancas == DancasDisponiveis.JAZZ){
 			setMensalidade (60);
+			
 		}
 		else if ( dancas == DancasDisponiveis.SALSA){
 			setMensalidade (70);
+			
 		}
 		else if ( dancas == DancasDisponiveis.TANGO){
 			setMensalidade (70);
 		}
 		
+	}
+	
+	public void Horario(){
+		if (dancas == DancasDisponiveis.BALLET){
+			setHorario("17:00");
+		}
+		else if ( dancas == DancasDisponiveis.CONTEPORANEA){
+			setHorario("18:00");
+		}
+		else if ( dancas == DancasDisponiveis.DANCA_DO_VENTRE){
+			setHorario("13:00");
+		}
+		else if ( dancas == DancasDisponiveis.HIP_HOP){
+			setHorario("14:30");
+		}
+		else if ( dancas == DancasDisponiveis.JAZZ){
+			setHorario("09:00");
+		}
+		else if ( dancas == DancasDisponiveis.SALSA){
+			setHorario("10:00");
+		}
+		else if ( dancas == DancasDisponiveis.TANGO){
+			setHorario("15:00");
+		}
 		
 	}
 	

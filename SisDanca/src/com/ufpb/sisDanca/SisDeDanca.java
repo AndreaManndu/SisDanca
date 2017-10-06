@@ -1,11 +1,13 @@
 package com.ufpb.sisDanca;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.ufpb.sisDanca.exception.AlunoJaExisteException;
 import com.ufpb.sisDanca.exception.DancaJaExisteException;
-import com.ufpb.sisDanca.exception.ProfessorJaExistenteException;
+import com.ufpb.sisDanca.exception.DancaJaExistenteException;
+
 
 public class SisDeDanca {
 	private Map<String, Professor> professores;
@@ -22,9 +24,9 @@ public class SisDeDanca {
 	}
 
 	public void cadastrarAluno(Aluno aluno) throws AlunoJaExisteException {
-		Aluno a= alunos.get(aluno.getEmail());
+		Aluno a= alunos.get(aluno.getCpf());
 		if(a == null){
-			this.alunos.put(aluno.getEmail(), aluno);
+			this.alunos.put(aluno.getCpf(), aluno);
 			
 		}else{
 			
@@ -33,51 +35,60 @@ public class SisDeDanca {
 			
 	}
 
-	public void cadastrarProfessor(Professor professor)throws ProfessorJaExistenteException  {
+	public void cadastrarProfessor(Professor professor)throws ProfessorJaExisteException  {
 		Professor p= professores.get(professor.getCpf());
 		if(p == null){
 			this.professores.put(professor.getCpf(), professor);	
 		}else{
-			throw new ProfessorJaExistenteException(" O professor já existe!");
+			throw new ProfessorJaExisteException(" O professor já existe!");
 			
 		}
 		
 	}
 
-	public void cadastrarDanca(Danca danca) throws DancaJaExisteException {
-		Danca d= dancas.get(danca.getTipoDanca());
-		if( d == null){
-			this.dancas.put(danca.toString(), danca);
-	
-		}else{
-			throw new DancaJaExisteException(" O professor já existe!");	
+
+
+	public Collection<Aluno> pesquisaAlunoPorDanca(DancasDisponiveis dan) throws AlunoInexistenteException{
+		Collection<Aluno> alunoPorDanca= alunos.values();
+		for (Aluno a:this.alunos.values()){
+			if(a.getTipoDanca().equals(dan)){
+				alunoPorDanca.add(a);
+			}
+			else{
+				throw new AlunoInexistenteException("O aluno não está cadastrado nessa aula de dança");
+			}
 		}
+		return alunoPorDanca;
 		
-	}
-
-	public Aluno pesquisaAlunoPorDanca(String cpf) throws AlunoJaExisteException {
-		
-		Aluno a = alunos.get(cpf);
-
-		if (a != null) {
-			return a;
-
-		} else {
-
-			throw new AlunoJaExisteException(" O Aluno já exista!");
-		}
 
 	}
 
-	public Professor pesquisaProfessor(String nome) throws ProfessorJaExistenteException {
-		Professor p = professores.get(nome);
+	public Professor pesquisaProfessor(String cpf) throws ProfessorInexistenteException {
+		Professor p = professores.get(cpf);
 
 		if (p != null) {
 			return p;
 
 		} else {
-			throw new ProfessorJaExistenteException(" O Aluno já exista!");
+			throw new ProfessorInexistenteException(" Não existe nenhum professor cadastrado com esse cf");
+		}
 
+	}
+	
+	public void removerAluno(String cpf){
+		for(Aluno a:this.alunos.values()){
+			if(a.getCpf().equals(cpf)){
+				alunos.remove(a);
+					
+			}
+		}
+	}
+	public void removerProfessor(String cpf){
+		for(Professor p:this.professores.values()){
+			if(p.getCpf().equals(cpf)){
+				professores.remove(p);
+
+			}
 		}
 	}
 }
