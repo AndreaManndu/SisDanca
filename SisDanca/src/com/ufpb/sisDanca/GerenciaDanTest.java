@@ -11,7 +11,7 @@ public class GerenciaDanTest {
 	public void test() {
 		SisDeDanca sistema= new SisDeDanca();
 		
-		Professor p1= new Professor("Wnessa","123456778","wanessa@gmail","22/01/2017");
+		Professor p1= new Professor("Wnessa","123456778","wanessa@gmail");
 		Danca d1 = new Danca(DancasDisponiveis.BALLET, "19:00", 10);
 		
 		

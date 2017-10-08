@@ -31,7 +31,7 @@ public class InterfaceStudioDance extends JFrame {
 
 	public InterfaceStudioDance() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 354);
+		setBounds(100, 100, 681, 479);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,6 +49,15 @@ public class InterfaceStudioDance extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cadastrar Professor");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				InterCadProfessor as = new InterCadProfessor();
+				as.setVisible(true);
+				
+			}
+		});
+		
 		btnNewButton_1.setBounds(212, 58, 222, 59);
 		contentPane.add(btnNewButton_1);
 		
@@ -57,6 +66,10 @@ public class InterfaceStudioDance extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Pesquisar Aluno Por Dan\u00E7a");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_3.setBounds(212, 107, 222, 59);
 		contentPane.add(btnNewButton_3);
 		

@@ -18,7 +18,7 @@ public class Projeto {
 	public static void main (String []args){
 		
 		SisDeDanca d = new SisDeDanca();
-		String resp =  JOptionPane.showInputDialog("Bem vindo ao Studio SisDança\n1.Cadasrar Professor\n2.Cadasrar Aluno\n3.Pesquisa Aluno Por Dança\n4.pesquisaProfessor\n5.Remover Aluno\n6.Remover Professor\n7.Sair");
+		String resp =  JOptionPane.showInputDialog("Bem vindo ao Studio SisDança\n1.Cadastrar Professor\n2.Cadasrar Aluno\n3.Pesquisa Aluno Por Dança\n4.pesquisaProfessor\n5.Remover Aluno\n6.Remover Professor\n7.Sair");
 		while (true){
 			if (resp.equals("1")){
 				String nome = JOptionPane.showInputDialog("Digite o nome:");
@@ -26,7 +26,7 @@ public class Projeto {
 				String email = JOptionPane.showInputDialog("Digite o email:");
 				String dataDeEntrada = JOptionPane.showInputDialog("Digite sua data de entrada na academia:");
 			
-				Professor professor = new Professor(nome, cpf, email, dataDeEntrada);
+				Professor professor = new Professor(nome, cpf, email);
 				try {
 					d.cadastrarProfessor(professor);
 				} catch (ProfessorJaExisteException e) {
@@ -54,15 +54,12 @@ public class Projeto {
 						dancas = DancasDisponiveis.TANGO;
 						break;
 					case 4:
-						dancas = DancasDisponiveis.SALSA;
-						break;
-					case 5:
 						dancas = DancasDisponiveis.BALLET;
 						break;
-					case 6:
+					case 5:
 						dancas = DancasDisponiveis.JAZZ;
 						break;
-					case 7:
+					case 6:
 						dancas = DancasDisponiveis.CONTEPORANEA;
 						break;
 					}
@@ -70,7 +67,7 @@ public class Projeto {
 				}
 				String dataDeEntrada = JOptionPane.showInputDialog("Digite sua data de entrada na academia:");
 				
-				Aluno a= new Aluno(nome,cpf,email,dancas,dataDeEntrada);
+				Aluno a= new Aluno(nome,cpf,email,dancas);
 				try {
 					d.cadastrarAluno(a);
 				} catch (AlunoJaExisteException e) {
@@ -107,15 +104,8 @@ public class Projeto {
 							System.out.println(dancas);
 						}
 						break;
+		
 					case 4:
-						dancas = DancasDisponiveis.SALSA;
-						try {
-							d.pesquisaAlunoPorDanca(dancas);
-						} catch (AlunoInexistenteException e) {
-							System.out.println(dancas);
-						}
-						break;
-					case 5:
 						dancas = DancasDisponiveis.BALLET;
 						try {
 							d.pesquisaAlunoPorDanca(dancas);
@@ -123,7 +113,7 @@ public class Projeto {
 							System.out.println(dancas);
 						}
 						break;
-					case 6:
+					case 5:
 						dancas = DancasDisponiveis.JAZZ;
 						try {
 							d.pesquisaAlunoPorDanca(dancas);
@@ -131,7 +121,7 @@ public class Projeto {
 							System.out.println(dancas);
 						}
 						break;
-					case 7:
+					case 6:
 						dancas = DancasDisponiveis.CONTEPORANEA;
 						try {
 							d.pesquisaAlunoPorDanca(dancas);

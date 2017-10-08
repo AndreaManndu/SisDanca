@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -13,10 +14,10 @@ import java.awt.event.ActionEvent;
 public class InterCadAluno extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tfNome;
+	private JTextField TFCPF;
 	private JLabel lblEmail;
-	private JTextField textField_2;
+	private JTextField TFEmail;
 	private JLabel lblTipoDeDana;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
@@ -35,62 +36,71 @@ public class InterCadAluno extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(28, 45, 46, 14);
+		lblNome.setBounds(10, 45, 46, 14);
 		contentPane.add(lblNome);
 		
-		textField = new JTextField();
-		textField.setBounds(110, 42, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tfNome = new JTextField();
+		tfNome.setBounds(58, 42, 125, 20);
+		contentPane.add(tfNome);
+		tfNome.setColumns(10);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(28, 84, 46, 14);
+		lblCpf.setBounds(10, 84, 46, 14);
 		contentPane.add(lblCpf);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(110, 81, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		TFCPF = new JTextField();
+		TFCPF.setBounds(58, 81, 125, 20);
+		contentPane.add(TFCPF);
+		TFCPF.setColumns(10);
 		
 		lblEmail = new JLabel("Email");
-		lblEmail.setBounds(28, 128, 46, 14);
+		lblEmail.setBounds(10, 128, 46, 14);
 		contentPane.add(lblEmail);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(110, 125, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		TFEmail = new JTextField();
+		TFEmail.setBounds(58, 125, 125, 20);
+		contentPane.add(TFEmail);
+		TFEmail.setColumns(10);
 		
 		lblTipoDeDana = new JLabel("Tipo de Dan\u00E7a");
 		lblTipoDeDana.setBounds(302, 29, 86, 14);
 		contentPane.add(lblTipoDeDana);
 		
-		btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(230, 62, 89, 23);
+		btnNewButton = new JButton("Hip Hop");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null,"Cadastramento realizado com sucesso, você está matriculado na aula de dança de Hip Hop");
+			}
+		});
+		btnNewButton.setBounds(221, 62, 113, 23);
 		contentPane.add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(360, 62, 89, 23);
+		btnNewButton_1 = new JButton("Ballet");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(344, 62, 105, 23);
 		contentPane.add(btnNewButton_1);
 		
-		btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(230, 104, 89, 23);
+		btnNewButton_2 = new JButton("Dan\u00E7a do Ventre");
+		btnNewButton_2.setBounds(221, 104, 113, 23);
 		contentPane.add(btnNewButton_2);
 		
-		btnNewButton_3 = new JButton("New button");
+		btnNewButton_3 = new JButton("Jazz");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_3.setBounds(360, 104, 89, 23);
+		btnNewButton_3.setBounds(344, 104, 105, 23);
 		contentPane.add(btnNewButton_3);
 		
-		btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(230, 150, 89, 23);
+		btnNewButton_4 = new JButton("Tango");
+		btnNewButton_4.setBounds(221, 150, 113, 23);
 		contentPane.add(btnNewButton_4);
 		
-		btnNewButton_5 = new JButton("New button");
-		btnNewButton_5.setBounds(360, 150, 89, 23);
+		btnNewButton_5 = new JButton("Contepor\u00E2nea");
+		btnNewButton_5.setBounds(345, 150, 104, 23);
 		contentPane.add(btnNewButton_5);
 		
 		btnNewButton_6 = new JButton("Voltar Menu");
