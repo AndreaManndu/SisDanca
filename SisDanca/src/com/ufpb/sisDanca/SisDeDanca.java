@@ -6,9 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ufpb.sisDanca.exception.AlunoInexistenteException;
 import com.ufpb.sisDanca.exception.AlunoJaExisteException;
 import com.ufpb.sisDanca.exception.DancaJaExisteException;
 import com.ufpb.sisDanca.exception.DancaJaExistenteException;
+import com.ufpb.sisDanca.exception.ProfessorInexistenteException;
+import com.ufpb.sisDanca.exception.ProfessorJaExisteException;
 
 
 public class SisDeDanca {
@@ -42,7 +45,7 @@ public class SisDeDanca {
 		professores.add(professor);
 	}
 
-	public List<Aluno> pesquisaAlunoPorDanca(DancasDisponiveis dan) throws AlunoInexistenteException{
+	public List<Aluno> pesquisaAlunosPorDanca(DancasDisponiveis dan) throws AlunoInexistenteException{
 		
 		List<Aluno> alunoPorDanca = new ArrayList();
 		for(Aluno a: alunos){
@@ -54,31 +57,36 @@ public class SisDeDanca {
 		return alunoPorDanca;
 	}
 
-	public Professor pesquisaProfessor(int cpf) throws ProfessorInexistenteException {
-		Professor p = professores.get(cpf);
-
-		if (p != null) {
-			return p;
-
-		} else {
-			throw new ProfessorInexistenteException(" Não existe nenhum professor cadastrado com esse cf");
+	public Professor pesquisaProfessor(String cpf) throws ProfessorInexistenteException {
+		for(Professor p: professores){
+			if (p.getCpf().equals(cpf)){
+				return p;
+			}
+			
+			
 		}
+		throw new ProfessorInexistenteException ("Não foi encontrado nenhum professor com esse cpf, ela não está cadastrado");
 
 	}
 	
-	public void removerAluno(String cpf){
+	public Aluno removerAluno(String cpf) throws AlunoInexistenteException{
 		for(Aluno a: alunos){
 			if(a.getCpf().equals(cpf)){
 				alunos.remove(a);
+				return a;
 			}
+			
 		}
+		throw new AlunoInexistenteException("O Aluno a ser removido não existe");
 	}
-	public void removerProfessor(String cpf){
-		for(Professor a: professores){
-			if(a.getCpf().equals(cpf)){
-				professores.remove(a);
-
+	public Professor removerProfessor(String cpf) throws ProfessorInexistenteException{
+		for(Professor p: professores){
+			if(p.getCpf().equals(cpf)){
+				professores.remove(p);
+				return p;
 			}
+			
 		}
+		throw new ProfessorInexistenteException("O Professor a ser removido não existe");
 	}
 }

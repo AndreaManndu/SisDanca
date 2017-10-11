@@ -4,11 +4,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.ufpb.sisDanca.Aluno;
+import com.ufpb.sisDanca.DancasDisponiveis;
+import com.ufpb.sisDanca.SisDeDanca;
+import com.ufpb.sisDanca.exception.AlunoJaExisteException;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class InterCadAluno extends JFrame {
@@ -26,6 +33,10 @@ public class InterCadAluno extends JFrame {
 	private JButton btnNewButton_4;
 	private JButton btnNewButton_5;
 	private JButton btnNewButton_6;
+	private static 	InterStudioDance telaCad = new InterStudioDance();
+	private static 	SisDeDanca sis = new SisDeDanca();
+
+
 
 	public InterCadAluno() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +80,10 @@ public class InterCadAluno extends JFrame {
 		btnNewButton = new JButton("Hip Hop");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null,"Cadastramento realizado com sucesso, você está matriculado na aula de dança de Hip Hop");
+				
+				 cadAluno(tfNome.getText(),TFCPF.getText(),TFEmail.getText(),DancasDisponiveis.HIP_HOP);
+				 apagaTexto();
+				 
 			}
 		});
 		btnNewButton.setBounds(221, 62, 113, 23);
@@ -78,40 +92,80 @@ public class InterCadAluno extends JFrame {
 		btnNewButton_1 = new JButton("Ballet");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cadAluno(tfNome.getText(),TFCPF.getText(),TFEmail.getText(),DancasDisponiveis.BALLET);
+				 apagaTexto();
 			}
 		});
 		btnNewButton_1.setBounds(344, 62, 105, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Dan\u00E7a do Ventre");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cadAluno(tfNome.getText(),TFCPF.getText(),TFEmail.getText(),DancasDisponiveis.DANCA_DO_VENTRE);
+				 apagaTexto();
+			}
+		});
 		btnNewButton_2.setBounds(221, 104, 113, 23);
 		contentPane.add(btnNewButton_2);
 		
 		btnNewButton_3 = new JButton("Jazz");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				cadAluno(tfNome.getText(),TFCPF.getText(),TFEmail.getText(),DancasDisponiveis.JAZZ);
+				 apagaTexto();
 			}
 		});
 		btnNewButton_3.setBounds(344, 104, 105, 23);
 		contentPane.add(btnNewButton_3);
 		
 		btnNewButton_4 = new JButton("Tango");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cadAluno(tfNome.getText(),TFCPF.getText(),TFEmail.getText(),DancasDisponiveis.TANGO);
+				 apagaTexto();
+			}
+		});
 		btnNewButton_4.setBounds(221, 150, 113, 23);
 		contentPane.add(btnNewButton_4);
 		
 		btnNewButton_5 = new JButton("Contepor\u00E2nea");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cadAluno(tfNome.getText(),TFCPF.getText(),TFEmail.getText(),DancasDisponiveis.CONTEPORANEA);
+				 apagaTexto();
+			}
+		});
 		btnNewButton_5.setBounds(345, 150, 104, 23);
 		contentPane.add(btnNewButton_5);
 		
 		btnNewButton_6 = new JButton("Voltar Menu");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InterfaceStudioDance telaCad = new InterfaceStudioDance();
 				telaCad.setVisible(true);
 				dispose();
 			}
 		});
 		btnNewButton_6.setBounds(299, 238, 104, 23);
 		contentPane.add(btnNewButton_6);
+	}
+	
+	public void cadAluno(String nome, String CPF, String email, DancasDisponiveis tipoDanca){
+		Aluno a = new Aluno(nome,CPF,email,tipoDanca);
+		Gravador grav = new  Gravador();
+		try {
+		grav.gravar(a.toString(), a.getNome());
+		
+			sis.cadastrarAluno(a);
+			JOptionPane.showMessageDialog(null, "Aluno cadastrado na dança"+tipoDanca.toString()+" com sucesso");
+		} catch (IOException | AlunoJaExisteException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void apagaTexto(){
+		tfNome.setText("");
+		TFCPF.setText("");
+		TFEmail.setText("");
 	}
 }

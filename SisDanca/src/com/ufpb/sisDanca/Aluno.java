@@ -9,6 +9,7 @@ public class Aluno extends Pessoa{
 		this.tipoDanca = tipoDanca;	
 	}
 
+
 	public DancasDisponiveis getTipoDanca() {
 		return tipoDanca;
 	}

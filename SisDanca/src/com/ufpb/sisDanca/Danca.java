@@ -55,10 +55,7 @@ public class Danca {
 			setMensalidade (60);
 			
 		}
-		else if ( dancas == DancasDisponiveis.SALSA){
-			setMensalidade (70);
-			
-		}
+
 		else if ( dancas == DancasDisponiveis.TANGO){
 			setMensalidade (70);
 		}
@@ -81,9 +78,7 @@ public class Danca {
 		else if ( dancas == DancasDisponiveis.JAZZ){
 			setHorario("09:00");
 		}
-		else if ( dancas == DancasDisponiveis.SALSA){
-			setHorario("10:00");
-		}
+
 		else if ( dancas == DancasDisponiveis.TANGO){
 			setHorario("15:00");
 		}

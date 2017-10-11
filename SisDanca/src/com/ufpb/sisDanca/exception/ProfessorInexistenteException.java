@@ -1,4 +1,4 @@
-package com.ufpb.sisDanca;
+package com.ufpb.sisDanca.exception;
 
 public class ProfessorInexistenteException extends Exception {
 	/**
