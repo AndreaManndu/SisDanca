@@ -9,9 +9,9 @@ public class Gravador {
 		FileWriter cria = new FileWriter(nomeDoArquivo+".txt");
 		BufferedWriter escreve = new BufferedWriter (cria);
 		escreve.write(texto);
-		
+		escreve.close();// o close estava invertido
 		cria.close();
-		escreve.close();
+		
 		
 	}
 
