@@ -22,8 +22,9 @@ public class InterCadProf extends JFrame {
 	private JTextField textFieldNome;
 	private JTextField textFieldCPF;
 	private JTextField textFieldEmail;
-
-	public InterCadProf() {
+	private SisDeDanca sis;
+	public InterCadProf(SisDeDanca sis) {
+		this.sis=sis;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -62,7 +63,7 @@ public class InterCadProf extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Professor prof = new Professor(textFieldNome.getText(),textFieldCPF.getText(),textFieldEmail.getText());
-				SisDeDanca sis = new SisDeDanca();
+				
 				try {
 					sis.cadastrarProfessor(prof);
 					JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso");

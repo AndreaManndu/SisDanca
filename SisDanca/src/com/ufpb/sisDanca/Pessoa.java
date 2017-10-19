@@ -1,6 +1,12 @@
 package com.ufpb.sisDanca;
 
-public abstract class Pessoa {
+import java.io.Serializable;
+
+public abstract class Pessoa implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cpf;
 	private String email;

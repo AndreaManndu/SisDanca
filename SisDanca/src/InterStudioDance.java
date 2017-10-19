@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -25,12 +26,9 @@ public class InterStudioDance extends JFrame {
 
 	private JPanel contentPane;
 	private static InterPesAluno1 pa = new InterPesAluno1();
-	private static InterCadAluno telaCad = new InterCadAluno();
+	
 	private static InterPesProf p = new InterPesProf();
 	private static SisDeDanca rem = new SisDeDanca();
-
-
-
 
 
 	public static void main(String[] args) {
@@ -56,6 +54,8 @@ public class InterStudioDance extends JFrame {
 		
 		JButton btnNewButton = new JButton("Cadastrar Aluno");
 		btnNewButton.addActionListener(new ActionListener() {
+			// passar como parametro o sistema
+			InterCadAluno telaCad = new InterCadAluno(rem);
 			public void actionPerformed(ActionEvent arg0) {
 				telaCad.setVisible(true);
 				dispose();
@@ -66,9 +66,11 @@ public class InterStudioDance extends JFrame {
 		
 		JButton btnNewButton_1 = new JButton("Cadastrar Professor");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			
+			public void actionPerformed(ActionEvent e){
+				InterCadProf as = new InterCadProf(rem);
+			
 				
-				InterCadProf as = new InterCadProf();
 				as.setVisible(true);
 				dispose();
 				
@@ -142,10 +144,10 @@ public class InterStudioDance extends JFrame {
 		lblSt.setBounds(107, 24, 202, 31);
 		contentPane.add(lblSt);
 		
-		ImageIcon img = new ImageIcon("C:/Users/Wanessa Paiva/git/SisDanca/SisDanca/imagens/silhuetas-de-muitas-pessoas-danca_1048-1573.jpg");
+		ImageIcon img = new ImageIcon("imagens/silhuetas-de-muitas-pessoas-danca_1048-1573.jpg");
 		
 		JLabel lbImg = new JLabel(img);
-		lbImg.setBounds(0, 0, 405, 416);
+		lbImg.setBounds(0, 0, 405, 383);
 		contentPane.add(lbImg);
 		
 		JButton BTAbout = new JButton("About");
@@ -163,8 +165,36 @@ public class InterStudioDance extends JFrame {
 				
 			}
 		});
+		
+		
 		BTAbout.setBounds(24, 398, 89, 23);
 		contentPane.add(BTAbout);
+		
+		JButton btnSair = new JButton("       Sair");
+		
+		btnSair.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Gravador gravador= new Gravador();
+				try {
+					
+					gravador.gravar2(rem.getAlunos(), "alunos.dat");
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(null, "erro "+e1.getMessage());
+				}
+				
+				try {
+					gravador.gravar2(rem.getProfessores(), "professores.dat");
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				}
+				
+				dispose();
+			}
+		});
+		btnSair.setBounds(123, 398, 89, 23);
+		contentPane.add(btnSair);
 		
 		
 		

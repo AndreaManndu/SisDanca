@@ -20,6 +20,22 @@ public class SisDeDanca {
 	private static List< Danca> dancas;
 	
 
+	public static List<Professor> getProfessores() {
+		return professores;
+	}
+
+	public static void setProfessores(List<Professor> professores) {
+		SisDeDanca.professores = professores;
+	}
+
+	public static List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public static void setAlunos(List<Aluno> alunos) {
+		SisDeDanca.alunos = alunos;
+	}
+
 	public SisDeDanca() {
 		this.professores = new ArrayList<Professor>();
 		this.alunos = new ArrayList< Aluno>();

@@ -34,11 +34,12 @@ public class InterCadAluno extends JFrame {
 	private JButton btnNewButton_5;
 	private JButton btnNewButton_6;
 	private static 	InterStudioDance telaCad = new InterStudioDance();
-	private static 	SisDeDanca sis = new SisDeDanca();
+	private SisDeDanca sis;
 
 
 
-	public InterCadAluno() {
+	public InterCadAluno(SisDeDanca sis) {
+		this.sis=sis;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 505, 354);
 		contentPane = new JPanel();
@@ -152,13 +153,11 @@ public class InterCadAluno extends JFrame {
 	
 	public void cadAluno(String nome, String CPF, String email, DancasDisponiveis tipoDanca){
 		Aluno a = new Aluno(nome,CPF,email,tipoDanca);
-		Gravador grav = new  Gravador();
+	
 		try {
-		grav.gravar(a.toString(), a.getNome());
-		
 			sis.cadastrarAluno(a);
-			JOptionPane.showMessageDialog(null, "Aluno cadastrado na dança"+tipoDanca.toString()+" com sucesso");
-		} catch (IOException | AlunoJaExisteException e) {
+			JOptionPane.showMessageDialog(null, "Aluno cadastrado na dança "+tipoDanca.toString()+" com sucesso");
+		} catch ( AlunoJaExisteException e) {
 			e.printStackTrace();
 		}
 		

@@ -2,6 +2,10 @@ package com.ufpb.sisDanca;
 
 public class Aluno extends Pessoa{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DancasDisponiveis tipoDanca;
 
 	public Aluno(String nome, String cpf, String email, DancasDisponiveis tipoDanca) {
