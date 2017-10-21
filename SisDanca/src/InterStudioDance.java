@@ -27,8 +27,8 @@ public class InterStudioDance extends JFrame {
 	private JPanel contentPane;
 	private static InterPesAluno1 pa = new InterPesAluno1();
 	
-	private static InterPesProf p = new InterPesProf();
-	private static SisDeDanca rem = new SisDeDanca();
+	
+	private static SisDeDanca sisDanca = new SisDeDanca();
 
 
 	public static void main(String[] args) {
@@ -55,7 +55,7 @@ public class InterStudioDance extends JFrame {
 		JButton btnNewButton = new JButton("Cadastrar Aluno");
 		btnNewButton.addActionListener(new ActionListener() {
 			// passar como parametro o sistema
-			InterCadAluno telaCad = new InterCadAluno(rem);
+			InterCadAluno telaCad = new InterCadAluno(sisDanca);
 			public void actionPerformed(ActionEvent arg0) {
 				telaCad.setVisible(true);
 				dispose();
@@ -68,7 +68,7 @@ public class InterStudioDance extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e){
-				InterCadProf as = new InterCadProf(rem);
+				InterCadProf as = new InterCadProf(sisDanca);
 			
 				
 				as.setVisible(true);
@@ -85,7 +85,7 @@ public class InterStudioDance extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String cpf = JOptionPane.showInputDialog("Informe o CPF do professor a ser removido: ");
 				try {
-					Professor a = rem.removerProfessor(cpf);
+					Professor a = sisDanca.removerProfessor(cpf);
 					JOptionPane.showMessageDialog(null, "O professor "+ a.getNome()+ " foi removido");
 				} catch (ProfessorInexistenteException e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
@@ -114,7 +114,7 @@ public class InterStudioDance extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = JOptionPane.showInputDialog("Informe o CPF do aluno a ser removido");
 				try {
-					Aluno a = rem.removerAluno(cpf);
+					Aluno a = sisDanca.removerAluno(cpf);
 					JOptionPane.showMessageDialog(null, "O aluno "+ a.getNome()+ " foi removido");
 				} catch (AlunoInexistenteException e1) {
 					JOptionPane.showMessageDialog(null,e1.getMessage());
@@ -130,6 +130,7 @@ public class InterStudioDance extends JFrame {
 		JButton btnNewButton_5 = new JButton("Pesquisar Professor");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				InterPesProf p = new InterPesProf(sisDanca);
 				p.setVisible(true);
 				dispose();
 				
@@ -149,28 +150,17 @@ public class InterStudioDance extends JFrame {
 		JLabel lbImg = new JLabel(img);
 		lbImg.setBounds(0, 0, 405, 383);
 		contentPane.add(lbImg);
-		
 		JButton BTAbout = new JButton("About");
-		
-		
 		BTAbout.addActionListener(new ActionListener(){
-		
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				InterSobre in = new InterSobre ();
 				in.setVisible(true);
-				
-				
-				
-				
 			}
 		});
-		
-		
 		BTAbout.setBounds(24, 398, 89, 23);
 		contentPane.add(BTAbout);
-		
-		JButton btnSair = new JButton("       Sair");
+		JButton btnSair = new JButton("Sair");
 		
 		btnSair.addActionListener(new ActionListener(){
 			
@@ -179,13 +169,13 @@ public class InterStudioDance extends JFrame {
 				Gravador gravador= new Gravador();
 				try {
 					
-					gravador.gravar2(rem.getAlunos(), "alunos.dat");
+					gravador.gravar2(sisDanca.getAlunos(), "alunos.dat");
 				} catch (IOException e1) {
 					JOptionPane.showMessageDialog(null, "erro "+e1.getMessage());
 				}
 				
 				try {
-					gravador.gravar2(rem.getProfessores(), "professores.dat");
+					gravador.gravar2(sisDanca.getProfessores(), "professores.dat");
 				} catch (IOException e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}

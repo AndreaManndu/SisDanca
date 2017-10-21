@@ -11,25 +11,23 @@ import java.util.List;
 
 
 public class Gravador {
-	public void gravar (String texto, String nomeDoArquivo) throws IOException{
-		FileWriter cria = new FileWriter(nomeDoArquivo+".txt");
-		BufferedWriter escreve = new BufferedWriter (cria);
-		escreve.write(texto);
-		escreve.close();// o close estava invertido
-		cria.close();
-		
-		
-	}
+	
 	public void gravar2(List object,String nomeDoArquivo) throws IOException {
+		//objeto que salva o objeto em arquivo
         ObjectOutputStream out = null;
         try {
+        	//cria a insancia do objeto em um novo arquivo
             out = new ObjectOutputStream(new FileOutputStream(nomeDoArquivo));
+            //escreve o objeto no arquivo
             out.writeObject(object);
         } catch (FileNotFoundException e) {
+        	//se tiver erro
             throw new IOException("O arquivo não foi encontrado " + nomeDoArquivo);
         } catch (IOException e) {
+        	//se tiver erro
             throw e;
         } finally {
+        	//finalizar o arquivo
             if (out != null) {
                 out.close();
             }
@@ -37,9 +35,11 @@ public class Gravador {
     }
     
     public List ler(String nomeDoArquivo) throws IOException{
-        ObjectInputStream in = null;
+        ObjectInputStream in = null; //objeo que le os objeos em arquivo
         try{
+        	//le um objeo em um arquivo
             in = new ObjectInputStream(new FileInputStream(nomeDoArquivo));
+            //retorna a lisa de objeos do arquivo
             return (List) in.readObject();
         }catch(FileNotFoundException e){
             throw new IOException("O arquivo não foi encontrado " + nomeDoArquivo);
