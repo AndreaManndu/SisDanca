@@ -19,6 +19,7 @@ public class SisDeDanca {
 	private static List<Aluno> alunos;
 	private static List< Danca> dancas;
 	
+	
 
 	public static List<Professor> getProfessores() {
 		return professores;
@@ -28,7 +29,7 @@ public class SisDeDanca {
 		SisDeDanca.professores = professores;
 	}
 
-	public static List<Aluno> getAlunos() {
+	public List<Aluno> getAlunos() {
 		return alunos;
 	}
 

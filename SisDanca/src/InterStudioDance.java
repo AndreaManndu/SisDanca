@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.ufpb.sisDanca.Aluno;
+import com.ufpb.sisDanca.Gravador;
 import com.ufpb.sisDanca.Professor;
 import com.ufpb.sisDanca.SisDeDanca;
 import com.ufpb.sisDanca.exception.AlunoInexistenteException;
@@ -21,8 +22,9 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
 
-public class InterStudioDance extends JFrame {
+public class InterStudioDance extends JFrame{
 
 	private JPanel contentPane;
 	private static InterPesAluno1 pa = new InterPesAluno1();
@@ -53,6 +55,8 @@ public class InterStudioDance extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Cadastrar Aluno");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton.setForeground(Color.MAGENTA);
 		btnNewButton.addActionListener(new ActionListener() {
 			// passar como parametro o sistema
 			InterCadAluno telaCad = new InterCadAluno(sisDanca);
@@ -65,6 +69,8 @@ public class InterStudioDance extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cadastrar Professor");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_1.setForeground(Color.MAGENTA);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e){
@@ -81,6 +87,8 @@ public class InterStudioDance extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Remover Professor");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_2.setForeground(Color.MAGENTA);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String cpf = JOptionPane.showInputDialog("Informe o CPF do professor a ser removido: ");
@@ -99,6 +107,8 @@ public class InterStudioDance extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Pesquisar Aluno Por Dan\u00E7a");
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_3.setForeground(Color.MAGENTA);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pa.setVisible(true);
@@ -110,6 +120,8 @@ public class InterStudioDance extends JFrame {
 		contentPane.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Remover Aluno");
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_4.setForeground(Color.MAGENTA);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = JOptionPane.showInputDialog("Informe o CPF do aluno a ser removido");
@@ -128,6 +140,8 @@ public class InterStudioDance extends JFrame {
 		contentPane.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("Pesquisar Professor");
+		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_5.setForeground(Color.MAGENTA);
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				InterPesProf p = new InterPesProf(sisDanca);
@@ -140,12 +154,12 @@ public class InterStudioDance extends JFrame {
 		contentPane.add(btnNewButton_5);
 		
 		JLabel lblSt = new JLabel("Sistema Studio Dance");
-		lblSt.setFont(new Font("Tempus Sans ITC", Font.BOLD, 14));
-		lblSt.setForeground(new Color(0, 0, 0));
+		lblSt.setFont(new Font("Tempus Sans ITC", Font.BOLD, 18));
+		lblSt.setForeground(Color.BLUE);
 		lblSt.setBounds(107, 24, 202, 31);
 		contentPane.add(lblSt);
 		
-		ImageIcon img = new ImageIcon("imagens/silhuetas-de-muitas-pessoas-danca_1048-1573.jpg");
+		ImageIcon img = new ImageIcon("SisDanca/Img/sisDance.jpg");
 		
 		JLabel lbImg = new JLabel(img);
 		lbImg.setBounds(0, 0, 405, 383);
